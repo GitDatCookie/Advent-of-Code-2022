@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Advent_of_Code_2022.Day_One
+namespace Advent_of_Code_2022._1.Day
 {
-    internal class Part_Two
+    internal class Calories_Part2
     {
         /// <summary>
         /// Uses sorted and reversed list from Day-One, Part-One to get the top 3 elfs with highest calorie count

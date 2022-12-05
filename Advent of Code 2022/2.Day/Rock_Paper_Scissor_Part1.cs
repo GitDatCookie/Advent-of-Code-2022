@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Advent_of_Code_2022.Day_Two
+namespace Advent_of_Code_2022._2.Day
 {
-    internal class Part_One
+    internal class Rock_Paper_Scissor_Part1
     {
         /// <summary>
         /// See method title

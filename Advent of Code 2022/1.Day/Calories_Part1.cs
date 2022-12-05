@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Advent_of_Code_2022.Day_One
+namespace Advent_of_Code_2022._1.Day
 {
-    internal class Part_One
+    internal class Calories_Part1
     {
         /// <summary>
         /// Reads all lines from file and sums up calorie count per elf
         /// </summary>
         /// <param name="fileLink"></param>
         /// <returns>a list of all elfs sorted from highest calorie count to lowest</returns>
-        public List<int> GetElfList(string fileLink)
+        public List<int> GetElfCaloriesList(string fileLink)
         {
 
             List<int> elfCaloriesList = new List<int>();

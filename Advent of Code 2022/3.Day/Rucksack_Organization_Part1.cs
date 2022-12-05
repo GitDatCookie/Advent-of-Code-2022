@@ -4,16 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Advent_of_Code_2022.Day_Three
+namespace Advent_of_Code_2022._3.Day
 {
-    internal class Part_One
+    internal class Rucksack_Organization_Part1
     {
+        /// <summary>
+        /// gets a list of string variables,
+        /// </summary>
+        /// <param name="fileLink"></param>
+        /// <returns>list of rucksacks</returns>
         public string[] GetRucksackList(string fileLink)
         {
             string[] rucksackList = System.IO.File.ReadAllLines(fileLink);
             return rucksackList;
         }
 
+        /// <summary>
+        /// gets first half of rucksack items from rucksackList
+        /// </summary>
+        /// <param name="rucksackList"></param>
+        /// <returns>first half of each item in rucksackList as new List</returns>
         public List<string> GetFirstCompartmentList(string[] rucksackList)
         {
             List<string> firstCompartmentList = new();
@@ -30,6 +40,11 @@ namespace Advent_of_Code_2022.Day_Three
             return firstCompartmentList;
         }
 
+        /// <summary>
+        /// gets second half of rucksack items from rucksackList
+        /// </summary>
+        /// <param name="rucksackList"></param>
+        /// <returns>second half of each item in rucksackList as new List</returns>
         public List<string> GetSecondCompartmentList(string[] rucksackList)
         {
             List<string> secondCompartmentList = new();
@@ -46,13 +61,20 @@ namespace Advent_of_Code_2022.Day_Three
             return secondCompartmentList;
         }
 
+        /// <summary>
+        /// Checks which char is the one, that is contained in both, first compartment and second compartment
+        /// then gets the priority Value of the char and returns it as sum of priority Values
+        /// </summary>
+        /// <param name="firstCompartmentList"></param>
+        /// <param name="secondCompartmentList"></param>
+        /// <returns> see summary </returns>
         public int GetSumOfItemTypePriority(List<string> firstCompartmentList, List<string> secondCompartmentList)
         {
             int prioritySum = 0;
 
             char priorityItemChar = new();
 
-            string priorityConversationChart = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string priorityConversationChart = "0abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
             for (int listCount = 0; listCount < firstCompartmentList.Count; listCount++)
             {
@@ -72,7 +94,7 @@ namespace Advent_of_Code_2022.Day_Three
 
                 for (int priority = 0; priority < priorityConversationChart.Length; priority++)
                 {
-                    if (priority == priorityItemChar)
+                    if (priorityConversationChart[priority] == priorityItemChar)
                     {
                         prioritySum += priority;
                     }
