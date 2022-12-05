@@ -8,6 +8,11 @@ namespace Advent_of_Code_2022.Day_Two
 {
     internal class Part_One
     {
+        /// <summary>
+        /// See method title
+        /// </summary>
+        /// <param name="fileLink"></param>
+        /// <returns>A list of opponents rock paper scissor moves from file</returns>
         public List<char> GetRockPaperScissorOpponentList(string fileLink)
         {
             string[] rockPaperScissorList = System.IO.File.ReadAllLines(fileLink);
@@ -20,6 +25,11 @@ namespace Advent_of_Code_2022.Day_Two
             return opponentList;
         }
 
+        /// <summary>
+        /// See method title
+        /// </summary>
+        /// <param name="fileLink"></param>
+        /// <returns>A list of players rock paper scissor moves from file</returns>
         public List<char> GetRockPaperScissorPlayerList(string fileLink)
         {
             string[] rockPaperScissorList = System.IO.File.ReadAllLines(fileLink);
@@ -32,6 +42,12 @@ namespace Advent_of_Code_2022.Day_Two
             return playerList;
         }
 
+        /// <summary>
+        /// Calculates totalScore of rock paper scizzor 
+        /// </summary>
+        /// <param name="opponentList"></param>
+        /// <param name="playerList"></param>
+        /// <returns>totalScore of all played rounds of rock paper scissor</returns>
         public int GetTotalScore(List<char> opponentList, List<char> playerList)
         {
             int totalScore = 0;
