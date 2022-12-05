@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Advent_of_Code_2022.Day_Two
+namespace Advent_of_Code_2022._2.Day
 {
-    internal class Part_Two
+    internal class Rock_Paper_Scissor_Part2
     {
         /// <summary>
         /// Calculates totalScore of rock paper scizzor 
