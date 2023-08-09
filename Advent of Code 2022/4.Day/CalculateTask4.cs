@@ -18,5 +18,13 @@ namespace Advent_of_Code_2022._4.Day
             int result = part1.GetOverlappingSectionNumber(firstElfSectionList, secondElfSectionList);
             return result;
         }
+        public int CalculatePart2(string fileLink)
+        {
+            Camp_Cleanup_Part2 part2= new();
+            Camp_Cleanup_Part1 part1 = new();
+            string[] campSectionList = part1.GetCampSectionList(fileLink);
+            int result = part2.ReturnSum(campSectionList, part1);
+            return result;
+        }
     }
 }
