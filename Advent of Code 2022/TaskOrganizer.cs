@@ -85,6 +85,7 @@ namespace Advent_of_Code_2022
                     CalculateTask4 task4 = new();
                     Console.WriteLine("The results are:");
                     Console.WriteLine("Part 1: " + task4.CalculatePart1(userInputFileLink));
+                    Console.WriteLine("Part 2: " + task4.CalculatePart2(userInputFileLink));
                     break;
                 case 5:
                     break;

@@ -29,7 +29,7 @@ namespace Advent_of_Code_2022._4.Day
                 subString = campSection.Substring(0, campSection.IndexOf(","));
 
                 int.TryParse(subString.Substring(0, subString.IndexOf("-")), out firstSection);
-                int.TryParse(subString.Substring(subString.IndexOf("-")), out lastSection);
+                int.TryParse(subString.Substring(subString.IndexOf("-")+1), out lastSection);
                 sections = new int[] { firstSection, lastSection };
                 firstElfSectionList.Add(sections);
             }
@@ -48,10 +48,10 @@ namespace Advent_of_Code_2022._4.Day
 
             foreach (var campSection in campSectionList)
             {
-                subString = campSection.Substring(campSection.IndexOf(","));
+                subString = campSection.Substring(campSection.IndexOf(",")+1);
 
                 int.TryParse(subString.Substring(0, subString.IndexOf("-")), out firstSection);
-                int.TryParse(subString.Substring(subString.IndexOf("-")), out lastSection);
+                int.TryParse(subString.Substring(subString.IndexOf("-")+1), out lastSection);
                 sections = new int[] { firstSection, lastSection };
                 secondtElfSectionList.Add(sections);
             }
@@ -62,11 +62,18 @@ namespace Advent_of_Code_2022._4.Day
         public int GetOverlappingSectionNumber(List<int[]> firstElfSectionList, List<int[]> secondElfSectionList)
         {
             int overlappingSectionNumber = 0; ;
-
-            for(int sectionNumber = 0; sectionNumber < firstElfSectionList.Count; sectionNumber++)
+            int number1 = 0;
+            int number2 = 0;
+            int number3 = 0;
+            int number4 = 0;
+            for (int sectionNumber = 0; sectionNumber < firstElfSectionList.Count; sectionNumber++)
             {
+                number1 = firstElfSectionList[sectionNumber][0];
+                number2 = firstElfSectionList[sectionNumber][1];
+                number3 = secondElfSectionList[sectionNumber][0];
+                number4 = secondElfSectionList[sectionNumber][1];
                 if ((firstElfSectionList[sectionNumber][0] >= secondElfSectionList[sectionNumber][0] && firstElfSectionList[sectionNumber][1] <= secondElfSectionList[sectionNumber][1]) 
-                    || (secondElfSectionList[sectionNumber][0] >= firstElfSectionList[sectionNumber][0] && secondElfSectionList[sectionNumber][0] <= firstElfSectionList[sectionNumber][0]))
+                    || (secondElfSectionList[sectionNumber][0] >= firstElfSectionList[sectionNumber][0] && secondElfSectionList[sectionNumber][1] <= firstElfSectionList[sectionNumber][1]))
                 {
                     overlappingSectionNumber += 1;
                 }
