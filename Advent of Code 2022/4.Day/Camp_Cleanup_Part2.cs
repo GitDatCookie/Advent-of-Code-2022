@@ -9,6 +9,12 @@ namespace Advent_of_Code_2022._4.Day
 {
     internal class Camp_Cleanup_Part2
     {
+        /// <summary>
+        /// checks if any of the number ranges are overlapping at all with another
+        /// </summary>
+        /// <param name="campSectionList"></param>
+        /// <param name="campCleanupPart1"></param>
+        /// <returns> the number of overlapping pairs </returns>
         public int ReturnSum(string[] campSectionList, Camp_Cleanup_Part1 campCleanupPart1)
         {
             List<int[]> firstElfSectionList = campCleanupPart1.GetFirstElfSectionList(campSectionList);

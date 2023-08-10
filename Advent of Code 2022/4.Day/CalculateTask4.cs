@@ -9,6 +9,11 @@ namespace Advent_of_Code_2022._4.Day
 {
     internal class CalculateTask4
     {
+        /// <summary>
+        /// Calculates Part 1 of 4.Day Task
+        /// </summary>
+        /// <param name="fileLink"></param>
+        /// <returns>result of Part 1 of 4.Day Task</returns>
         public int CalculatePart1(string fileLink)
         {
             Camp_Cleanup_Part1 part1 = new();
@@ -18,6 +23,12 @@ namespace Advent_of_Code_2022._4.Day
             int result = part1.GetOverlappingSectionNumber(firstElfSectionList, secondElfSectionList);
             return result;
         }
+
+        /// <summary>
+        /// Calculates Part 2 of 4.Day Task
+        /// </summary>
+        /// <param name="fileLink"></param>
+        /// <returns>result of Part 2 of 4.Day Task</returns>
         public int CalculatePart2(string fileLink)
         {
             Camp_Cleanup_Part2 part2= new();
