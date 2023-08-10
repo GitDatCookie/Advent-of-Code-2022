@@ -90,15 +90,23 @@ namespace Advent_of_Code_2022
                     break;
                 case 5:
                     CalculateTask5 task5 = new();
-                    (List<string[]> task5List, string task5String) = (task5.CalculatePart1(userInputFileLink).Item1, task5.CalculatePart1(userInputFileLink).Item2);
+                    (List<string[]> task5ListPart1, string task5StringPart1) = (task5.CalculatePart1(userInputFileLink).Item1, task5.CalculatePart1(userInputFileLink).Item2);
                     Console.WriteLine("The results are:\n");
                     Console.WriteLine("Part1:\n________________\n");
-                    foreach(var line in task5List)
+                    foreach (var line in task5ListPart1)
                     {
-                        Console.WriteLine(line[0]+" "+line[1]);
+                        Console.WriteLine(line[0] + " " + line[1]);
                     }
-                    Console.WriteLine($"\nResult: {task5String} \n________________");
+                    Console.WriteLine($"\nResult: {task5StringPart1} \n________________");
 
+                    (List<string[]> task5ListPart2, string task5StringPart2) = (task5.CalculatePart2(userInputFileLink).Item1, task5.CalculatePart2(userInputFileLink).Item2);
+                    Console.WriteLine("The results are:\n");
+                    Console.WriteLine("Part2:\n________________\n");
+                    foreach (var line in task5ListPart2)
+                    {
+                        Console.WriteLine(line[0] + " " + line[1]);
+                    }
+                    Console.WriteLine($"\nResult: {task5StringPart2} \n________________");
                     break;
                 case 6:
                     break;

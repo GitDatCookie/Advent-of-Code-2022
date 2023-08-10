@@ -22,16 +22,16 @@ namespace Advent_of_Code_2022._5.Day
 
 
         /// <summary>
-        /// Returns List of the basic lineup of the crates
+        /// Returns List for basic lineup of  crates
         /// </summary>
         /// <param name="supplyStackList"></param>
-        /// <returns>A List of List<char> in the ordered, that last entry is most top crate
+        /// <returns>A ordered List of List<char> , last entry of each line is top most crate 
         /// </returns>
         public List<List<char>> GetSupplyPositionList(string[] supplyStackList) 
         {
-
-
+            
             List<string> verticalIndex = new();
+            //fills verticalIndex with all lines which contain crate information
             foreach (var line in supplyStackList)
             {
                 if (!line.Contains("move") && String.IsNullOrWhiteSpace(line) == false)
@@ -40,7 +40,9 @@ namespace Advent_of_Code_2022._5.Day
                 }
 
             }
+
             List<int> horizontalIndex = new();
+            //fills horizontalIndex with information to pinpoint each crate
             string digitLine = verticalIndex[verticalIndex.Count - 1];
             for(int i = 0; i< digitLine.Length; i++)
             {
@@ -49,9 +51,12 @@ namespace Advent_of_Code_2022._5.Day
                     horizontalIndex.Add(i);
                 }
             }
-            verticalIndex.RemoveAt(verticalIndex.Count-1);
-            List<List<char>> supplyMatrix = new();
 
+            //removes horizontal information from vertical index
+            verticalIndex.RemoveAt(verticalIndex.Count-1);
+
+            List<List<char>> supplyMatrix = new();
+            //fills supplyMatrix with horizontal andd vertikal information to create a 2D array
             foreach(var supplyLine in verticalIndex)
             {
                 List<char> supplyContentList = new List<char>();
@@ -63,6 +68,7 @@ namespace Advent_of_Code_2022._5.Day
             }
 
             List<List<char>> supplyPositionList = new();
+            //removes all whitespace in matrix to easier change char within
             for (int i = 0; i < horizontalIndex.Count(); i++) 
             {
                 List<char> containerList = new();
@@ -125,6 +131,7 @@ namespace Advent_of_Code_2022._5.Day
         public (List<string[]>, string?) GetAppliedSupplyStackList(List<List<char>> supplyPositionList, List<int[]> supplyMovementList)
         {
             List<List<char>> _supplyPositionList = supplyPositionList;
+            //moves [0] crates of [1] stack to [2] stack, 1 at a time
             foreach(var line in supplyMovementList)
             {
                 for (int i = 0; i < line[0];  i++)
@@ -137,7 +144,29 @@ namespace Advent_of_Code_2022._5.Day
                 }
             }
 
-            //optional making the stack look pretty again
+            List<string[]> stackedSupplyPositionList = GetHumanEyePleasingList(supplyPositionList);
+
+            string? answer = null;
+            //creates string holding the letters of each topmost crate
+            foreach (var list in stackedSupplyPositionList)
+            {
+                answer = answer + list[1][list[1].Length-2].ToString();
+            }
+
+            return (stackedSupplyPositionList, answer);
+        }
+
+        /// <summary>
+        /// Creates a more pleasing List, 
+        /// instead of e.g.: CHDNFE \n JUEKFLE 
+        /// will show: 1 [C][H][D][N][F][E] \n  2 [J][U][E][K][F][L][E] 
+        /// </summary>
+        /// <param name="supplyPositionList"></param>
+        /// <returns>aforementioned List</returns>
+        public List<string[]> GetHumanEyePleasingList(List<List<char>> supplyPositionList)
+        {
+            //mostly optional code, changes the endresult to be more pleasing for the human eye
+            List<List<char>> _supplyPositionList = supplyPositionList;
             int stackNumber = 0;
             List<string[]> stackedSupplyPositionList = new();
             foreach (var list in _supplyPositionList)
@@ -146,7 +175,7 @@ namespace Advent_of_Code_2022._5.Day
                 result[0] = stackNumber.ToString();
                 string cache = new string(list.ToArray());
                 string supplyCache = null; ;
-                foreach(var character in cache)
+                foreach (var character in cache)
                 {
                     supplyCache += "[" + character + "]";
                 }
@@ -155,13 +184,36 @@ namespace Advent_of_Code_2022._5.Day
                 stackNumber++;
             }
 
-            string? answer = null;
-            foreach (var list in stackedSupplyPositionList)
+            return stackedSupplyPositionList;
+        }
+
+        /// <summary>
+        /// overloaded method mostly same as above but changed for use in part 2
+        /// </summary>
+        /// <param name="supplyPositionList"></param>
+        /// <returns>List for use in part 2</returns>
+        public List<string[]> GetHumanEyePleasingList(List<string> supplyPositionList)
+        {
+            //mostly optional code, changes the endresult to be more pleasing for the human eye
+            List<string> _supplyPositionList = supplyPositionList;
+            int stackNumber = 0;
+            List<string[]> stackedSupplyPositionList = new();
+            foreach (var list in _supplyPositionList)
             {
-                answer = answer + list[1][list[1].Length-2].ToString();
+                string[] result = new string[2];
+                result[0] = stackNumber.ToString();
+                string cache = new string(list.ToArray());
+                string supplyCache = null; ;
+                foreach (var character in cache)
+                {
+                    supplyCache += "[" + character + "]";
+                }
+                result[1] = supplyCache;
+                stackedSupplyPositionList.Add(result);
+                stackNumber++;
             }
 
-            return (stackedSupplyPositionList, answer);
+            return stackedSupplyPositionList;
         }
 
     }

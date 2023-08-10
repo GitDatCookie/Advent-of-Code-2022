@@ -23,10 +23,10 @@ namespace Advent_of_Code_2022._1.Day
         }
 
         /// <summary>
-        /// Calculates Part 1 of 1.Day Task
+        /// Calculates Part 2 of 1.Day Task
         /// </summary>
         /// <param name="fileLink"></param>
-        /// <returns>result of Part 1 of 1.Day Task</returns>
+        /// <returns>result of Part 2 of 1.Day Task</returns>
         public int CalculatePart2(string fileLink)
         {
             Calories_Part2 part2 = new();
