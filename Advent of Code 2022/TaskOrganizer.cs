@@ -2,6 +2,7 @@
 using Advent_of_Code_2022._2.Day;
 using Advent_of_Code_2022._3.Day;
 using Advent_of_Code_2022._4.Day;
+using Advent_of_Code_2022._5.Day;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -88,6 +89,16 @@ namespace Advent_of_Code_2022
                     Console.WriteLine("Part 2: " + task4.CalculatePart2(userInputFileLink));
                     break;
                 case 5:
+                    CalculateTask5 task5 = new();
+                    (List<string[]> task5List, string task5String) = (task5.CalculatePart1(userInputFileLink).Item1, task5.CalculatePart1(userInputFileLink).Item2);
+                    Console.WriteLine("The results are:\n");
+                    Console.WriteLine("Part1:\n________________\n");
+                    foreach(var line in task5List)
+                    {
+                        Console.WriteLine(line[0]+" "+line[1]);
+                    }
+                    Console.WriteLine($"\nResult: {task5String} \n________________");
+
                     break;
                 case 6:
                     break;
