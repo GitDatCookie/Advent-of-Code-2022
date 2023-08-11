@@ -4,6 +4,7 @@ using Advent_of_Code_2022._3.Day;
 using Advent_of_Code_2022._4.Day;
 using Advent_of_Code_2022._5.Day;
 using Advent_of_Code_2022._6.Day;
+using Advent_of_Code_2022._7.Day;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace Advent_of_Code_2022
         public string GetUserInput()
         {
             string userInput = Console.ReadLine();
+            userInput = userInput.Trim('"');
             return userInput;
         }
 
@@ -116,6 +118,10 @@ namespace Advent_of_Code_2022
                     Console.WriteLine("Part 2: " + task6.CalculatePart2(userInputFileLink));
                     break;
                 case 7:
+                    CalculateTask7 task7 = new();
+                    Console.WriteLine("The results are :");
+                    Console.WriteLine("Part 1: " + task7.CalculatePart1(userInputFileLink));
+                    Console.WriteLine("Part 2: " + task7.CalculatePart2(userInputFileLink));
                     break;
                 case 8:
                     break;
