@@ -59,6 +59,7 @@ namespace Advent_of_Code_2022._6.Day
                 counter = 0;
                 startingPosition = i;
                 tuningTroubleSubString = tuningTroubleString.Substring(startingPosition, distinctCharacters);
+                //sets marker as last index of unique substring
                 if(marker != 0)
                 {
                     break;
