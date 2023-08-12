@@ -8,6 +8,11 @@ namespace Advent_of_Code_2022._7.Day
 {
     internal class CalculateTask7
     {
+        /// <summary>
+        /// Seems kinda obvious considering the last 6
+        /// </summary>
+        /// <param name="FileName"></param>
+        /// <returns></returns>
         public long CalculatePart1(string FileName)
         {
             No_Space_Left_On_Device_Part1 part1 = new();
@@ -17,6 +22,11 @@ namespace Advent_of_Code_2022._7.Day
 
         }
 
+        /// <summary>
+        /// Still getting the result of the second task of corresponding day
+        /// </summary>
+        /// <param name="FileName"></param>
+        /// <returns></returns>
         public long CalculatePart2(string FileName)
         {
             No_Space_Left_On_Device_Part1 part1 = new();
