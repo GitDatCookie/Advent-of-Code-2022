@@ -5,6 +5,7 @@ using Advent_of_Code_2022._4.Day;
 using Advent_of_Code_2022._5.Day;
 using Advent_of_Code_2022._6.Day;
 using Advent_of_Code_2022._7.Day;
+using Advent_of_Code_2022._8.Day;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,8 +40,24 @@ namespace Advent_of_Code_2022
 
             if (parseResult == true && taskNumber < 26 && taskNumber > 0)
             {
-                Console.WriteLine($"Testing Tasks of Day {taskNumber} \nPlease enter the path to your Task Input File:");
-                ExecuteTask(taskNumber, GetUserInput());
+
+                //for testing
+                string inputFolder = @"C:\Users\RingoCookie\source\repos\Advent-of-Code-2022\Task Input\";
+
+                string[] filePaths = Directory.GetFiles(inputFolder, "Day 8*");
+                string taskFile = filePaths[0].Trim('"');
+                //string taskFile = null;
+                if (taskFile != null)
+                {
+                    Console.WriteLine($"Testing Tasks of Day {taskNumber}");
+                    ExecuteTask(taskNumber, taskFile);
+                }
+                else
+                {
+                    Console.WriteLine($"Testing Tasks of Day {taskNumber} \nPlease enter the path to your Task Input File:");
+                    ExecuteTask(taskNumber, GetUserInput());
+                }
+
             }
             else
             {
@@ -124,6 +141,10 @@ namespace Advent_of_Code_2022
                     Console.WriteLine("Part 2: " + task7.CalculatePart2(userInputFileLink));
                     break;
                 case 8:
+                    CalculateTask8 task8 = new();
+                    Console.WriteLine("The results are :");
+                    Console.WriteLine("Part 1: " + task8.CalculatePart1(userInputFileLink));
+                    Console.WriteLine("Part 2: " + task8.CalculatePart2(userInputFileLink));
                     break;
                 case 9:
                     break;
