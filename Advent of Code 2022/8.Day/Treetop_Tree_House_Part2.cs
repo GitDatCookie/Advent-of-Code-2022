@@ -8,11 +8,18 @@ namespace Advent_of_Code_2022._8.Day
 {
     internal class Treetop_Tree_House_Part2
     {
+        /// <summary>
+        /// returns best scenic score of treegrid
+        /// biggest int of all trees seen in each direction multiplied together 
+        /// </summary>
+        /// <param name="fileLink"></param>
+        /// <returns>scenic score</returns>
         public int GetScenicScore(string fileLink)
         {
             Treetop_Tree_House_Part1 part1 = new();
             int[,] treeGrid = part1.GetTreeGrid(fileLink);
             List<int> scenicScoreList = new();
+
             int scenicScore = 0;
             for (int i = 0; i < treeGrid.GetLength(0); i++)
             {
@@ -23,13 +30,22 @@ namespace Advent_of_Code_2022._8.Day
                 }
             }
 
+            //to get the biggest score
             scenicScoreList.Sort();
             scenicScoreList.Reverse();
+
             scenicScore = scenicScoreList[0];
 
             return scenicScore;
         }
 
+        /// <summary>
+        /// calculates scenic score for each tree
+        /// </summary>
+        /// <param name="treeGrid"></param>
+        /// <param name="horizontal"></param>
+        /// <param name="vertical"></param>
+        /// <returns>scenic score</returns>
         public int CalculateScenicScore(int[,] treeGrid, int horizontal, int vertical)
         {
             int northScore = CalculateScenicScoreNorth(treeGrid, horizontal, vertical);
@@ -43,6 +59,15 @@ namespace Advent_of_Code_2022._8.Day
 
 
         }
+
+        /// <summary>
+        /// for each direction checks all trees which are visible from current tree
+        /// </summary>
+        /// <param name="treeGrid"></param>
+        /// <param name="horizontal"></param>
+        /// <param name="vertical"></param>
+        /// <returns>visible trees</returns>
+        #region ScenicScore by direction
         public int CalculateScenicScoreNorth(int[,] treeGrid, int horizontal, int vertical)
         {
             int treeSize = treeGrid[vertical, horizontal];
@@ -99,5 +124,6 @@ namespace Advent_of_Code_2022._8.Day
             }
             return distanceWest = horizontal;
         }
+        #endregion
     }
 }
