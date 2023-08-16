@@ -9,6 +9,11 @@ namespace Advent_of_Code_2022._8.Day
 {
     internal class Treetop_Tree_House_Part1
     {
+        /// <summary>
+        /// get a grid of all treesizes from file
+        /// </summary>
+        /// <param name="fileLink"></param>
+        /// <returns>tree size 2d array</returns>
         public int[,] GetTreeGrid(string fileLink)
         {
             string[] allLines = File.ReadAllLines(fileLink);
@@ -18,13 +23,18 @@ namespace Advent_of_Code_2022._8.Day
                 string line = allLines[i];
                 for (int j = 0; j < allLines[i].Length; j++)
                 {
-                    int test = line[j]-'0';
-                    treeGrid[i,j] = test;
+                    int treeSize = line[j]-'0';
+                    treeGrid[i,j] = treeSize;
                 }
             }
             return treeGrid;
         }
 
+        /// <summary>
+        /// Counts how many trees are visible (tree is bigger than all others in line of at least one direction)
+        /// </summary>
+        /// <param name="treeGrid"></param>
+        /// <returns>number of visible trees</returns>
         public int CheckTreeCount(int[,] treeGrid)
         {
             int treeCounter = 0;
@@ -42,6 +52,13 @@ namespace Advent_of_Code_2022._8.Day
             return treeCounter;
         }
 
+        /// <summary>
+        /// checks for tree visibility
+        /// </summary>
+        /// <param name="treeGrid"></param>
+        /// <param name="horizontal"></param>
+        /// <param name="vertical"></param>
+        /// <returns>true if tree is visible, else false</returns>
         public bool CheckVisibility(int[,] treeGrid, int horizontal, int vertical)
         {
             return CheckVisibilityNorth(treeGrid, horizontal, vertical) ||
@@ -49,6 +66,17 @@ namespace Advent_of_Code_2022._8.Day
                 CheckVisibilityWest(treeGrid, horizontal, vertical) ||
                 CheckVisibilityEast(treeGrid, horizontal, vertical);
         }
+
+        /// <summary>
+        /// more or less the same for each direction
+        /// moves one field away from tree and checks each consecutive tree if it's of the same size or bigger
+        /// </summary>
+        /// <param name="treeGrid"></param>
+        /// <param name="horizontal"></param>
+        /// <param name="vertical"></param>
+        /// <returns>false is invisible, true if visible</returns>
+        #region Visibility by direction
+
         public bool CheckVisibilityNorth(int[,] treeGrid, int horizontal, int vertical)
         {
             int treeSize = treeGrid[vertical, horizontal];
@@ -101,5 +129,6 @@ namespace Advent_of_Code_2022._8.Day
             }
             return true;
         }
+        #endregion
     }
 }
